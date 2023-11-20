@@ -1,0 +1,14 @@
+# The LST and MST stereo triggers are basically independent but any
+# extra triggered MST is included in the readout after a LST stereo
+# trigger. Single triggered LSTs are not to be read out after a MST trigger.
+# Without 'hardstereo', such events would have to be cleaned of the LST data in 
+# the analysis stage to emulate the hardware stereo readout.
+# Since MAGIC telescopes might be included with prod-6, we allow them
+# (as software stereo for now) to trigger also the CTA array,
+# not just the other way around. Still no readout of a single LST
+# because the hardstereo covers LSTs only.
+# This file accounts for 15 MST positions, not accounting for close-by alternatives.
+
+Trigger 2 of 1, 2, 3, 4 width 120 hardstereo   # LST array (hardware) stereo trigger
+Trigger 2 of 5 to 19 width 200      # MST array (software) stereo trigger
+Trigger 2 of 20 to 21 width 100     # MAGIC (software?) stereo trigger
